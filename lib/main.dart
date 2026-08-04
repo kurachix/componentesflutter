@@ -4,6 +4,7 @@ import 'package:device_preview/device_preview.dart';
 
 import 'widgets/texto_superior.dart';
 import 'widgets/campo_formulario.dart';
+import 'widgets/botao_padrao.dart';
 
 void main() {
   runApp(
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
@@ -44,6 +45,14 @@ class HomeScreen extends StatelessWidget {
             top: 200,
             left: 27,
             child: CampoFormulario(hintText: 'Email Address'),
+          ),
+          Positioned(
+            top: 280,
+            left: 27,
+            child: BotaoPadrao(
+              text: 'Continue',
+              onPressed: () {},
+            ),
           ),
         ],
       ),
