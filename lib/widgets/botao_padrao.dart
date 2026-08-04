@@ -7,7 +7,7 @@ class BotaoPadrao extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.width = 344,
-    this.height = 49,
+    this.height = 56,
     this.backgroundColor = const Color(0xFF8E6CEF),
     this.textColor = Colors.white,
   });
@@ -30,17 +30,20 @@ class BotaoPadrao extends StatelessWidget {
           backgroundColor: backgroundColor,
           foregroundColor: textColor,
           elevation: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 48.6, vertical: 11),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
           textStyle: GoogleFonts.outfit(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
             height: 1.0,
           ),
         ),
-        child: Text(text),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(text, maxLines: 1, softWrap: false),
+        ),
       ),
     );
   }

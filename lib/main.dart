@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/password': (_) => const PasswordLoginScreen(),
         '/create-account': (_) => const CreateAccountScreen(),
         '/forgot-password': (_) => const ForgotPasswordScreen(),
+        '/reset-sent': (_) => const ResetSentScreen(),
       },
     );
   }
@@ -264,6 +265,14 @@ class CreateAccountScreen extends StatelessWidget {
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 
+  void _openResetSentPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => const ResetSentScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -302,9 +311,81 @@ class ForgotPasswordScreen extends StatelessWidget {
                   BotaoPadrao(
                     text: 'Continue',
                     width: double.infinity,
-                    onPressed: () {},
+                    onPressed: () => _openResetSentPage(context),
                   ),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ResetSentScreen extends StatelessWidget {
+  const ResetSentScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 12,
+              left: 24,
+              child: Text(
+                'Password Reset',
+                style: TextStyle(
+                  color: Color(0xFFC8C8C8),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 28,
+              left: 24,
+              right: 24,
+              bottom: 0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(28)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'foto_pag5.png',
+                      width: 180,
+                      fit: BoxFit.contain,
+                    ),
+                    const SizedBox(height: 24),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18),
+                      child: Text(
+                        'We Sent you an Email to reset your password.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF2E2E2E),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          height: 1.2,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    BotaoPadrao(
+                      text: 'Return to Login',
+                      width: 159,
+                      height: 52,
+                      onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

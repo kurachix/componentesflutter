@@ -7,7 +7,7 @@ class BotaoLogin extends StatelessWidget {
     required this.icone,
     required this.onPressed,
     this.width = 344,
-    this.height = 49,
+    this.height = 56,
     this.backgroundColor = const Color(0xFFF4F4F4),
     this.textColor = const Color(0xFF1C1C1C),
   });
@@ -41,22 +41,26 @@ class BotaoLogin extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Positioned(
-              left: 16,
+              left: 20,
               top: 0,
               bottom: 0,
               child: Center(child: icone),
             ),
-            const SizedBox.expand(),
             Center(
-              child: Text(
-                texto,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: 'Circular Std',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  height: 1.0,
-                ).copyWith(color: textColor),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  texto,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  softWrap: false,
+                  style: const TextStyle(
+                    fontFamily: 'Circular Std',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    height: 1.0,
+                  ).copyWith(color: textColor),
+                ),
               ),
             ),
           ],
