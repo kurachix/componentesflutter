@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
 
 import 'widgets/texto_superior.dart';
+import 'widgets/campo_formulario.dart';
 
 void main() {
   runApp(
@@ -39,6 +40,11 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           FixedTitleText(text: 'Sign in'),
+          Positioned(
+            top: 200,
+            left: 27,
+            child: CampoFormulario(hintText: 'Email Address'),
+          ),
         ],
       ),
     );
