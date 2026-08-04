@@ -184,67 +184,69 @@ class CreateAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Positioned(
-            top: 16,
-            left: 24,
-            child: BotaoVoltar(
-              onPressed: () => Navigator.of(context).pop(),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 16,
+              left: 24,
+              child: BotaoVoltar(
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ),
-          ),
-          Positioned(
-            top: 80,
-            left: 24,
-            right: 24,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Create Account',
-                  style: TextStyle(
-                    color: Color(0xFF2E2E2E),
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 28),
-                const CampoFormulario(hintText: 'Firstname', width: double.infinity),
-                const SizedBox(height: 12),
-                const CampoFormulario(hintText: 'Lastname', width: double.infinity),
-                const SizedBox(height: 12),
-                const CampoFormulario(hintText: 'Email Address', width: double.infinity),
-                const SizedBox(height: 12),
-                const CampoFormulario(hintText: 'Password', width: double.infinity),
-                const SizedBox(height: 24),
-                BotaoPadrao(
-                  text: 'Continue',
-                  width: double.infinity,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 24),
-                const Text.rich(
-                  TextSpan(
+            Positioned(
+              top: 80,
+              left: 24,
+              right: 24,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Create Account',
                     style: TextStyle(
-                      color: Color(0xFF2D2D2D),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF2E2E2E),
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
                     ),
-                    children: [
-                      TextSpan(text: 'Forgot Password ? '),
-                      TextSpan(
-                        text: 'Reset',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 28),
+                  const CampoFormulario(hintText: 'Firstname', width: double.infinity),
+                  const SizedBox(height: 12),
+                  const CampoFormulario(hintText: 'Lastname', width: double.infinity),
+                  const SizedBox(height: 12),
+                  const CampoFormulario(hintText: 'Email Address', width: double.infinity),
+                  const SizedBox(height: 12),
+                  const CampoFormulario(hintText: 'Password', width: double.infinity),
+                  const SizedBox(height: 24),
+                  BotaoPadrao(
+                    text: 'Continue',
+                    width: double.infinity,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 24),
+                  const Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFF2D2D2D),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      children: [
+                        TextSpan(text: 'Forgot Password ? '),
+                        TextSpan(
+                          text: 'Reset',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
