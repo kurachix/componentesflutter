@@ -65,16 +65,47 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 380,
-            left: 27,
-            child: BotaoLogin(
-              texto: 'Continue With Apple',
-              icone: Icon(
-                Icons.apple,
-                size: 24,
-                color: Colors.black,
+            top: 413,
+            left: 23,
+            child: SizedBox(
+              width: 344,
+              height: 171,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BotaoLogin(
+                    texto: 'Continue With Apple',
+                    icone: const Icon(
+                      Icons.apple,
+                      size: 24,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                  BotaoLogin(
+                    texto: 'Continue With Google',
+                    icone: const Text(
+                      'G',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF4285F4),
+                        height: 1.0,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                  BotaoLogin(
+                    texto: 'Continue With Facebook',
+                    icone: const Icon(
+                      Icons.facebook,
+                      size: 24,
+                      color: Color(0xFF1877F2),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
               ),
-              onPressed: () {},
             ),
           ),
         ],

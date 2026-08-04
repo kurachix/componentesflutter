@@ -32,25 +32,32 @@ class BotaoLogin extends StatelessWidget {
           foregroundColor: textColor,
           elevation: 0,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 48.6, vertical: 11),
+          padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
+          fit: StackFit.expand,
           children: [
-            icone,
-            const SizedBox(width: 12.15),
-            Text(
-              texto,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontFamily: 'Circular Std',
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                height: 1.0,
-              ).copyWith(color: textColor),
+            Positioned(
+              left: 16,
+              top: 0,
+              bottom: 0,
+              child: Center(child: icone),
+            ),
+            const SizedBox.expand(),
+            Center(
+              child: Text(
+                texto,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: 'Circular Std',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  height: 1.0,
+                ).copyWith(color: textColor),
+              ),
             ),
           ],
         ),
