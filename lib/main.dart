@@ -5,6 +5,7 @@ import 'package:device_preview/device_preview.dart';
 import 'widgets/texto_superior.dart';
 import 'widgets/campo_formulario.dart';
 import 'widgets/botao_padrao.dart';
+import 'widgets/texto_com_span.dart';
 
 void main() {
   runApp(
@@ -52,6 +53,14 @@ class HomeScreen extends StatelessWidget {
             child: BotaoPadrao(
               text: 'Continue',
               onPressed: () {},
+            ),
+          ),
+          Positioned(
+            top: 345,
+            left: 27,
+            child: TextoComSpan(
+              textoNormal: 'Don\'t have an Account ? ',
+              textoEmSpan: 'Create One',
             ),
           ),
         ],
