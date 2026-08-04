@@ -359,7 +359,7 @@ class ResetSentScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'foto_pag5.png',
+                      'assets/foto_pag5.png',
                       width: 180,
                       fit: BoxFit.contain,
                     ),
