@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'widgets/texto_superior.dart';
+
 void main() {
   runApp(
     DevicePreview(
@@ -33,7 +35,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SizedBox.expand(),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          FixedTitleText(text: 'Sign in'),
+        ],
+      ),
     );
   }
 }
