@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'widgets/botao_login.dart';
 import 'widgets/botao_padrao.dart';
 import 'widgets/campo_formulario.dart';
+import 'widgets/botao_voltar.dart';
 import 'widgets/texto_com_span.dart';
 import 'widgets/texto_superior.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (_) => const HomeScreen(),
         '/password': (_) => const PasswordLoginScreen(),
+        '/create-account': (_) => const CreateAccountScreen(),
       },
     );
   }
@@ -144,7 +146,7 @@ class PasswordLoginScreen extends StatelessWidget {
             left: 27,
             child: BotaoPadrao(
               text: 'Continue',
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushNamed('/create-account'),
             ),
           ),
           Positioned(
@@ -167,6 +169,79 @@ class PasswordLoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CreateAccountScreen extends StatelessWidget {
+  const CreateAccountScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Positioned(
+            top: 16,
+            left: 24,
+            child: BotaoVoltar(
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ),
+          Positioned(
+            top: 80,
+            left: 24,
+            right: 24,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Create Account',
+                  style: TextStyle(
+                    color: Color(0xFF2E2E2E),
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 28),
+                const CampoFormulario(hintText: 'Firstname', width: double.infinity),
+                const SizedBox(height: 12),
+                const CampoFormulario(hintText: 'Lastname', width: double.infinity),
+                const SizedBox(height: 12),
+                const CampoFormulario(hintText: 'Email Address', width: double.infinity),
+                const SizedBox(height: 12),
+                const CampoFormulario(hintText: 'Password', width: double.infinity),
+                const SizedBox(height: 24),
+                BotaoPadrao(
+                  text: 'Continue',
+                  width: double.infinity,
+                  onPressed: () {},
+                ),
+                const SizedBox(height: 24),
+                const Text.rich(
+                  TextSpan(
+                    style: TextStyle(
+                      color: Color(0xFF2D2D2D),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    children: [
+                      TextSpan(text: 'Forgot Password ? '),
+                      TextSpan(
+                        text: 'Reset',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
