@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'widgets/botao_login.dart';
 import 'widgets/botao_padrao.dart';
-import 'widgets/campo_formulario.dart';
 import 'widgets/botao_voltar.dart';
+import 'widgets/campo_formulario.dart';
 import 'widgets/texto_com_span.dart';
 import 'widgets/texto_superior.dart';
 
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/': (_) => const HomeScreen(),
         '/password': (_) => const PasswordLoginScreen(),
         '/create-account': (_) => const CreateAccountScreen(),
+        '/forgot-password': (_) => const ForgotPasswordScreen(),
       },
     );
   }
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  void _openSecondPage(BuildContext context) {
+  void _openPasswordPage(BuildContext context) {
     Navigator.of(context).pushNamed('/password');
   }
 
@@ -63,7 +64,7 @@ class HomeScreen extends StatelessWidget {
             left: 27,
             child: BotaoPadrao(
               text: 'Continue',
-              onPressed: () => _openSecondPage(context),
+              onPressed: () => _openPasswordPage(context),
             ),
           ),
           Positioned(
@@ -90,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                       size: 24,
                       color: Colors.black,
                     ),
-                    onPressed: () => _openSecondPage(context),
+                    onPressed: () => _openPasswordPage(context),
                   ),
                   BotaoLogin(
                     texto: 'Continue With Google',
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                         height: 1.0,
                       ),
                     ),
-                    onPressed: () => _openSecondPage(context),
+                    onPressed: () => _openPasswordPage(context),
                   ),
                   BotaoLogin(
                     texto: 'Continue With Facebook',
@@ -112,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                       size: 24,
                       color: Color(0xFF1877F2),
                     ),
-                    onPressed: () => _openSecondPage(context),
+                    onPressed: () => _openPasswordPage(context),
                   ),
                 ],
               ),
@@ -126,6 +127,10 @@ class HomeScreen extends StatelessWidget {
 
 class PasswordLoginScreen extends StatelessWidget {
   const PasswordLoginScreen({super.key});
+
+  void _openCreateAccountPage(BuildContext context) {
+    Navigator.of(context).pushNamed('/create-account');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +151,7 @@ class PasswordLoginScreen extends StatelessWidget {
             left: 27,
             child: BotaoPadrao(
               text: 'Continue',
-              onPressed: () => Navigator.of(context).pushNamed('/create-account'),
+              onPressed: () => _openCreateAccountPage(context),
             ),
           ),
           Positioned(
@@ -179,6 +184,10 @@ class PasswordLoginScreen extends StatelessWidget {
 
 class CreateAccountScreen extends StatelessWidget {
   const CreateAccountScreen({super.key});
+
+  void _openForgotPasswordPage(BuildContext context) {
+    Navigator.of(context).pushNamed('/forgot-password');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +230,7 @@ class CreateAccountScreen extends StatelessWidget {
                   BotaoPadrao(
                     text: 'Continue',
                     width: double.infinity,
-                    onPressed: () {},
+                    onPressed: () => _openForgotPasswordPage(context),
                   ),
                   const SizedBox(height: 24),
                   const Text.rich(
@@ -241,6 +250,59 @@ class CreateAccountScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 16,
+              left: 24,
+              child: BotaoVoltar(
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ),
+            Positioned(
+              top: 80,
+              left: 24,
+              right: 24,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Forgot Password',
+                    style: TextStyle(
+                      color: Color(0xFF2E2E2E),
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+                  const CampoFormulario(
+                    hintText: 'Enter Email address',
+                    width: double.infinity,
+                  ),
+                  const SizedBox(height: 24),
+                  BotaoPadrao(
+                    text: 'Continue',
+                    width: double.infinity,
+                    onPressed: () {},
                   ),
                 ],
               ),
