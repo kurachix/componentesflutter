@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
-import 'widgets/texto_superior.dart';
-import 'widgets/campo_formulario.dart';
-import 'widgets/botao_padrao.dart';
-import 'widgets/texto_com_span.dart';
 import 'widgets/botao_login.dart';
+import 'widgets/botao_padrao.dart';
+import 'widgets/campo_formulario.dart';
+import 'widgets/texto_com_span.dart';
+import 'widgets/texto_superior.dart';
 
 void main() {
   runApp(
@@ -28,13 +28,21 @@ class MyApp extends StatelessWidget {
       title: 'Meu App',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: const HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const HomeScreen(),
+        '/password': (_) => const PasswordLoginScreen(),
+      },
     );
   }
 }
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _openSecondPage(BuildContext context) {
+    Navigator.of(context).pushNamed('/password');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +61,7 @@ class HomeScreen extends StatelessWidget {
             left: 27,
             child: BotaoPadrao(
               text: 'Continue',
-              onPressed: () {},
+              onPressed: () => _openSecondPage(context),
             ),
           ),
           Positioned(
@@ -80,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       size: 24,
                       color: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () => _openSecondPage(context),
                   ),
                   BotaoLogin(
                     texto: 'Continue With Google',
@@ -93,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                         height: 1.0,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () => _openSecondPage(context),
                   ),
                   BotaoLogin(
                     texto: 'Continue With Facebook',
@@ -102,7 +110,60 @@ class HomeScreen extends StatelessWidget {
                       size: 24,
                       color: Color(0xFF1877F2),
                     ),
-                    onPressed: () {},
+                    onPressed: () => _openSecondPage(context),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PasswordLoginScreen extends StatelessWidget {
+  const PasswordLoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          FixedTitleText(text: 'Sign in'),
+          Positioned(
+            top: 200,
+            left: 27,
+            child: CampoFormulario(
+              hintText: 'Password',
+            ),
+          ),
+          Positioned(
+            top: 280,
+            left: 27,
+            child: BotaoPadrao(
+              text: 'Continue',
+              onPressed: () {},
+            ),
+          ),
+          Positioned(
+            top: 345,
+            left: 27,
+            child: Text.rich(
+              TextSpan(
+                style: TextStyle(
+                  color: Color(0xFF2D2D2D),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
+                children: [
+                  TextSpan(text: 'Forgot Password ? '),
+                  TextSpan(
+                    text: 'Reset',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ],
               ),
